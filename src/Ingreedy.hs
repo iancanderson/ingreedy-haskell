@@ -23,10 +23,10 @@ amountParser =
        return $ digitToInt amountChar
 
 unitParser :: Parser Unit
-unitParser = return "lb."
+unitParser = many (noneOf " ")
 
 ingredientParser :: Parser Ingredient
-ingredientParser = return "potatoes"
+ingredientParser = many anyChar
 
 parseIngredientAddition :: String -> Maybe IngredientAddition
 parseIngredientAddition input =

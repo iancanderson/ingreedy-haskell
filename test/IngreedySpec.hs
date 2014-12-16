@@ -17,4 +17,6 @@ spec = do
         it "parses a simple ingredient addition" $ do
             (parseIngredientAddition "2 lb. potatoes") `shouldBe`
               (Just $ IngredientAddition 2 "lb." "potatoes")
-
+        it "parses multi-word ingredients" $ do
+            (parseIngredientAddition "2 lb. parmesan cheese") `shouldBe`
+              (Just $ IngredientAddition 2 "lb." "parmesan cheese")
