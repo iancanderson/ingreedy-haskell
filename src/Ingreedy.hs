@@ -9,21 +9,21 @@ type Unit = String
 data IngredientAddition = IngredientAddition Amount Unit Ingredient deriving (Show, Eq)
 
 parser :: Parser IngredientAddition
-parser =
-    do amount <- amountParser
-       spaces
-       unit <- unitParser
-       spaces
-       ingredient <- ingredientParser
-       return $ IngredientAddition amount unit ingredient
+parser = do
+    amount <- amountParser
+    spaces
+    unit <- unitParser
+    spaces
+    ingredient <- ingredientParser
+    return $ IngredientAddition amount unit ingredient
 
 amountParser :: Parser Amount
-amountParser =
-    do amountChar <- digit
-       return $ digitToInt amountChar
+amountParser = do
+    amountChar <- many digit
+    return $ read amountChar
 
 unitParser :: Parser Unit
-unitParser = many (noneOf " ")
+unitParser = many $ noneOf " "
 
 ingredientParser :: Parser Ingredient
 ingredientParser = many anyChar

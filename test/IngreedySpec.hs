@@ -20,3 +20,6 @@ spec = do
         it "parses multi-word ingredients" $ do
             (parseIngredientAddition "2 lb. parmesan cheese") `shouldBe`
               (Just $ IngredientAddition 2 "lb." "parmesan cheese")
+        it "parses multidigit amounts" $ do
+            (parseIngredientAddition "22 lb. parmesan cheese") `shouldBe`
+              (Just $ IngredientAddition 22 "lb." "parmesan cheese")
