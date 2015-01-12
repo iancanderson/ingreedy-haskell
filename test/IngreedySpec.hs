@@ -14,6 +14,9 @@ spec = do
         it "parses a simple ingredient addition" $ do
             (parseIngredientAddition "1 lb. potatoes") `shouldBe`
               (Just $ IngredientAddition "1" "lb." "potatoes")
+        it "doesn't require spaces between amount and unit" $ do
+            (parseIngredientAddition "12oz potatoes") `shouldBe`
+              (Just $ IngredientAddition "12" "oz" "potatoes")
         it "parses a simple ingredient addition" $ do
             (parseIngredientAddition "2 lb. potatoes") `shouldBe`
               (Just $ IngredientAddition "2" "lb." "potatoes")
