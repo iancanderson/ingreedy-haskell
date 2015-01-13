@@ -10,7 +10,7 @@ Library
   Default-Language:     Haskell2010
   HS-Source-Dirs:       src
   GHC-Options:          -Wall
-  Exposed-Modules:      Ingreedy
+  Exposed-Modules:      Ingreedy, Ingreedy.UnitParser
   Build-Depends:        base >= 4 && < 5
                       , parsec
 
@@ -23,3 +23,4 @@ Test-Suite spec
   Build-Depends:        base
                       , hspec
                       , ingreedy
+                      , parsec

@@ -15,8 +15,8 @@ spec = do
             (parseIngredientAddition "1 lb. potatoes") `shouldBe`
               (Just $ IngredientAddition "1" "lb." "potatoes")
         it "doesn't require spaces between amount and unit" $ do
-            (parseIngredientAddition "12oz potatoes") `shouldBe`
-              (Just $ IngredientAddition "12" "oz" "potatoes")
+            (parseIngredientAddition "12lb. potatoes") `shouldBe`
+              (Just $ IngredientAddition "12" "lb." "potatoes")
         it "parses a simple ingredient addition" $ do
             (parseIngredientAddition "2 lb. potatoes") `shouldBe`
               (Just $ IngredientAddition "2" "lb." "potatoes")
@@ -35,3 +35,6 @@ spec = do
         it "parses complex fractional amounts" $ do
             (parseIngredientAddition "1 1/2 lb. parmesan cheese") `shouldBe`
               (Just $ IngredientAddition "1 1/2" "lb." "parmesan cheese")
+        -- it "parses an ingredient addition without units" $ do
+        --     (parseIngredientAddition "1 potato") `shouldBe`
+        --       (Just $ IngredientAddition "1" Nothing "potatoes")

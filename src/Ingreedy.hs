@@ -4,10 +4,11 @@ import Data.Char
 import Text.Parsec.Token
 import Text.ParserCombinators.Parsec
 
+import Ingreedy.UnitParser
+
 -- data Amount = Int | Float deriving (Show, Eq, Read)
 type Amount = String
 type Ingredient = String
-type Unit = String
 data IngredientAddition = IngredientAddition Amount Unit Ingredient deriving (Show, Eq)
 
 parser :: Parser IngredientAddition
@@ -46,9 +47,6 @@ decimalParser = do
 amountParser :: Parser Amount
 amountParser = choice
     [ try decimalParser, try fractionParser, try mixedNumberParser, try integerParser ]
-
-unitParser :: Parser Unit
-unitParser = many $ noneOf " "
 
 ingredientParser :: Parser Ingredient
 ingredientParser = many anyChar
