@@ -1,7 +1,5 @@
 module Ingreedy where
 
-import Data.Char
-import Text.Parsec.Token
 import Text.ParserCombinators.Parsec
 
 import Ingreedy.UnitParser
@@ -26,7 +24,7 @@ integerParser = many digit
 fractionParser :: Parser String
 fractionParser = do
     numerator <- integerParser
-    char '/'
+    _ <- char '/'
     denominator <- integerParser
     return $ numerator ++ "/" ++ denominator
 
@@ -40,7 +38,7 @@ mixedNumberParser = do
 decimalParser :: Parser String
 decimalParser = do
     wholeNumber <- integerParser
-    string "."
+    _ <- string "."
     decimal <- integerParser
     return $ wholeNumber ++ "." ++ decimal
 
