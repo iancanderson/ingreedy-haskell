@@ -2,10 +2,12 @@ module Ingreedy.UnitParser where
 
 import Text.ParserCombinators.Parsec
 
-type Unit = String
+data Unit = Pounds deriving (Eq, Show)
 
-poundsParser :: Parser String
-poundsParser = parseAny ["lb.", "lb", "pounds", "pound"]
+poundsParser :: Parser Unit
+poundsParser = do
+  _ <- parseAny ["lb.", "lb", "pounds", "pound"]
+  return $ Pounds
 
 parseAny xs = choice $ map (\x -> try $ string x) xs
 
