@@ -17,14 +17,15 @@ parseUnit input =
 spec :: Spec
 spec = do
     describe "unitParser" $ do
-        it "parses an abbreviated unit" $ do
+        it "parses ounces" $ do
+            parseUnit "ounces" `shouldBe` Just Ounces
+            parseUnit "ounce" `shouldBe` Just Ounces
+            parseUnit "oz" `shouldBe` Just Ounces
+        it "parses pounds" $ do
             parseUnit "lb" `shouldBe` Just Pounds
-        it "parses an abbreviated unit with punctuation" $ do
             parseUnit "lb." `shouldBe` Just Pounds
-        it "parses a full unit" $ do
             parseUnit "pound" `shouldBe` Just Pounds
-        it "parses a plural unit" $ do
             parseUnit "pounds" `shouldBe` Just Pounds
         it "doesn't parse non-units" $ do
             parseUnit "table" `shouldBe` Nothing
-
+            parseUnit "ouncessss" `shouldBe` Nothing
