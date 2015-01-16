@@ -18,6 +18,8 @@ spec :: Spec
 spec = do
     describe "unitParser" $ do
       it "parses an abbreviated unit" $ do
+          parseUnit "lb" `shouldBe` "lb"
+      it "parses an abbreviated unit with punctuation" $ do
           parseUnit "lb." `shouldBe` "lb."
       it "parses a full unit" $ do
           parseUnit "pound" `shouldBe` "pound"
