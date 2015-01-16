@@ -5,7 +5,7 @@ import Text.ParserCombinators.Parsec
 type Unit = String
 
 poundsParser :: Parser String
-poundsParser = parseAny ["lb.", "lb", "pound"]
+poundsParser = parseAny ["lb.", "lb", "pounds", "pound"]
 
 parseAny xs = choice $ map (\x -> try $ string x) xs
 
